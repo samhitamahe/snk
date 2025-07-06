@@ -1,1 +1,21 @@
+name: Generate Snake
 
+on:
+  # Run automatically every day at midnight
+  schedule:
+    - cron: "0 0 * * *"
+  
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    name: generate snake contribution graph
+    steps:
+      - uses: Platane/snk@v3
+        with:
+          github_user_name: samhitamahe
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
